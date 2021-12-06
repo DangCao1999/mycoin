@@ -16,21 +16,29 @@ class CardCoinTop extends StatelessWidget {
       width: double.infinity,
       height: 100,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Image.network(
             "https://s2.coinmarketcap.com/static/img/coins/64x64/${coin.id}.png",
             width: 48,
             height: 48,
           ),
-          Text(coin.symbol.toString()),
-          buildPercentChange24h(),
-          Text(
-            coin.quote!.price.toStringAsFixed(2),
-          ),
-          ElevatedButton(
-            onPressed: () => {},
-            child: Text("Buy")),
+          SizedBox(
+              height: 100,
+              width: 50,
+              child: Center(child: Text(coin.symbol.toString()))),
+          SizedBox(
+              height: 100,
+              width: 50,
+              child: Center(child: buildPercentChange24h())),
+          SizedBox(
+              height: 100,
+              width: 70,
+              child: Center(
+                  child: Text(
+                coin.quote!.price.toStringAsFixed(2),
+              ))),
+          ElevatedButton(onPressed: () => {}, child: Text("Buy")),
         ],
       ),
     );
