@@ -65,7 +65,7 @@ class _TrendingScreenState extends State<TrendingScreen> {
                 ),
               ),
               Container(
-                height: 500,
+                height: 570,
                 child: ListView.builder(
                     itemCount: coins.length,
                     itemBuilder: (BuildContext context, index) {

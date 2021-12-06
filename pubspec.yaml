@@ -38,6 +38,7 @@ dependencies:
   dio: ^4.0.4
   equatable: ^2.0.3
   intl: ^0.17.0
+  passcode_screen: ^2.0.0
 
 dev_dependencies:
   flutter_test:
