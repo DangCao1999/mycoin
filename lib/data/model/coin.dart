@@ -1,13 +1,15 @@
-class Coin {
-  late int id;
-  late String name;
-  late String symbol;
-  late String slug;
-  late int rank;
-  late int isActive;
-  late String firstHistoricalData;
-  late String lastHistoricalData;
+import 'package:mycoin/data/model/quote.dart';
 
+class Coin {
+  late int? id;
+  late String? name;
+  late String? symbol;
+  late String? slug;
+  late int? rank;
+  late int? isActive;
+  late String? firstHistoricalData;
+  late String? lastHistoricalData;
+  late Quote? quote;
 
   Coin({
       required this.id,
@@ -18,6 +20,7 @@ class Coin {
       required this.isActive,
       required this.firstHistoricalData,
       required this.lastHistoricalData,
+      required this.quote,
   });
 
   Coin.fromJson(Map<String, dynamic> json) {
@@ -29,6 +32,7 @@ class Coin {
     isActive = json['is_active'];
     firstHistoricalData = json['first_historical_data'];
     lastHistoricalData = json['last_historical_data'];
+    quote = Quote.fromJson(json["quote"]["USD"]);
   }
 
   Map<String, dynamic> toJson() {
