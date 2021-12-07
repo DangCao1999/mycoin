@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:mycoin/config/enviroment.dart';
+import 'package:mycoin/data/dto/coin_dto.dart';
 import 'package:mycoin/data/model/coin.dart';
 
 
@@ -16,7 +17,14 @@ class CoinRepository{
     var response  = await _dio.get(Enviroment.endPoint + "/v1/cryptocurrency/listings/latest");
     var data = response.data["data"] as List;
     coinsData = data.map((coin) => Coin.fromJson(coin)).toList();
-    print(coinsData[0].id);
+    return coinsData;
+  }
+
+  Future<List<CoinDTO>> fetchAllCoinMap() async{
+    List<CoinDTO> coinsData = [];
+    var response = await  _dio.get(Enviroment.endPoint + "/v1/cryptocurrency/map");
+    var data = response.data["data"] as List;
+    coinsData = data.map((coin) => CoinDTO.fromJson(coin)).toList();
     return coinsData;
   }
 }

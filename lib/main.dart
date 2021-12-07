@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screen_lock/flutter_screen_lock.dart';
 import 'package:mycoin/cubit/coin.dart/coin_cubit.dart';
+import 'package:mycoin/cubit/coinDTO/coindto_cubit.dart';
 import 'package:mycoin/cubit/user/cubit/user_cubit.dart';
+import 'package:mycoin/data/dto/coin_dto.dart';
 import 'package:mycoin/data/repository/coin_repository.dart';
 import 'package:mycoin/data/repository/user_repository.dart';
 import 'package:mycoin/screens/general/dialog_add_transaction.dart';
@@ -28,8 +30,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         theme: ThemeData(
           fontFamily: "OpenSands",
-          
-          ),
+        ),
         title: _title,
         home: MultiBlocProvider(
           providers: [
@@ -40,6 +41,9 @@ class MyApp extends StatelessWidget {
             BlocProvider(
                 create: (context) =>
                     UserCubit(RepositoryProvider.of<UserRepository>(context))),
+            BlocProvider(
+                create: (context) => CoinDTOCubit(
+                    RepositoryProvider.of<CoinRepository>(context)))
           ],
           child: const MyStatefulWidget(),
         ));
@@ -57,22 +61,9 @@ class MyStatefulWidget extends StatefulWidget {
 /// This is the private State class that goes with MyStatefulWidget.
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    TrendingScreen(),
-    MyCoinScreen(),
-  ];
-
-  @override
-  void initState() {
-    Timer(const Duration(seconds: 3), () {
-      screenLock(context: context, correctString: "1234");
-    });
-    initializeFlutterFire();
-    super.initState();
-  }
-
   bool _initialized = false;
   bool _error = false;
+  late CoinDTOCubit coinDTOCubit;
   void initializeFlutterFire() async {
     try {
       // Wait for Firebase to initialize and set `_initialized` state to true
@@ -92,6 +83,21 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    TrendingScreen(),
+    MyCoinScreen(),
+  ];
+
+  @override
+  void initState() {
+    Timer(const Duration(seconds: 3), () {
+      screenLock(context: context, correctString: "1234");
+    });
+    initializeFlutterFire();
+    coinDTOCubit = BlocProvider.of<CoinDTOCubit>(context);
+    super.initState();
   }
 
   @override
@@ -130,11 +136,16 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         onTap: _onItemTapped,
       ),
       floatingActionButton: FloatingActionButton(
-          
           child: const Icon(Icons.insights),
           backgroundColor: Colors.amber.shade700,
           onPressed: () {
-            showDialog<void>(context: context, builder: (context) => const DialogAddTransaction());
+            showDialog<void>(
+                context: context,
+                builder: (_) =>  BlocProvider.value(
+                  value: BlocProvider.of<CoinDTOCubit>(context),
+                  child: DialogAddTransaction(
+                      coinDTOCubit: coinDTOCubit),
+                ));
           }),
     );
   }

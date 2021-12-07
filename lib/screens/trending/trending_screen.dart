@@ -38,7 +38,7 @@ class _TrendingScreenState extends State<TrendingScreen> {
           child: Container(
             height: double.infinity,
             width: double.infinity,
-            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: Column(
               children: [
                 Container(
@@ -88,7 +88,7 @@ class _TrendingScreenState extends State<TrendingScreen> {
                   ),
                 ),
                 Container(
-                  height: 570,
+                  height: 642,
                   child: ListView.builder(
                       itemCount: coins.length,
                       itemBuilder: (BuildContext context, index) {
