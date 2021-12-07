@@ -6,9 +6,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screen_lock/flutter_screen_lock.dart';
 import 'package:mycoin/cubit/coin.dart/coin_cubit.dart';
 import 'package:mycoin/cubit/coinDTO/coindto_cubit.dart';
+import 'package:mycoin/cubit/history_coin/history_coin_cubit.dart';
 import 'package:mycoin/cubit/user/cubit/user_cubit.dart';
 import 'package:mycoin/data/dto/coin_dto.dart';
 import 'package:mycoin/data/repository/coin_repository.dart';
+import 'package:mycoin/data/repository/history_coin_repository.dart';
 import 'package:mycoin/data/repository/user_repository.dart';
 import 'package:mycoin/screens/general/dialog_add_transaction.dart';
 import 'package:mycoin/screens/mycoin/my_coin_screen.dart';
@@ -17,6 +19,7 @@ import 'package:mycoin/screens/trending/trending_screen.dart';
 void main() => runApp(MultiRepositoryProvider(providers: [
       RepositoryProvider(create: (_) => CoinRepository()),
       RepositoryProvider(create: (_) => UserRepository()),
+      RepositoryProvider(create: (_) => HistoryCoinRepository())
     ], child: const MyApp()));
 
 /// This is the main application widget.
@@ -43,7 +46,11 @@ class MyApp extends StatelessWidget {
                     UserCubit(RepositoryProvider.of<UserRepository>(context))),
             BlocProvider(
                 create: (context) => CoinDTOCubit(
-                    RepositoryProvider.of<CoinRepository>(context)))
+                    RepositoryProvider.of<CoinRepository>(context))),
+            BlocProvider(
+              create: (context) => HistoryCoinCubit(
+                  RepositoryProvider.of<HistoryCoinRepository>(context)),
+            ),
           ],
           child: const MyStatefulWidget(),
         ));
@@ -141,11 +148,17 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           onPressed: () {
             showDialog<void>(
                 context: context,
-                builder: (_) =>  BlocProvider.value(
-                  value: BlocProvider.of<CoinDTOCubit>(context),
-                  child: DialogAddTransaction(
-                      coinDTOCubit: coinDTOCubit),
-                ));
+                builder: (_) => MultiBlocProvider(
+                      providers: [
+                        BlocProvider.value(
+                          value: BlocProvider.of<CoinDTOCubit>(context),
+                        ),
+                        BlocProvider.value(
+                          value: BlocProvider.of<HistoryCoinCubit>(context),
+                        ),
+                      ],
+                      child: DialogAddTransaction(),
+                    ));
           }),
     );
   }

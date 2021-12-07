@@ -1,16 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:mycoin/data/model/history_coin.dart';
-
+import 'package:mycoin/data/model/transaction.dart';
 
 class HistoryCoinRepository {
-  
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-  saveHistoryCoin(String uid, HistoryCoin transactionHistoryCoin) {
-
+  CollectionReference users = FirebaseFirestore.instance.collection('users');
+  saveTransaction(String uid, int cid, TransactionCoin transactionHistoryCoin) {
+    users
+        .doc(uid)
+        .collection("transactionHistory")
+        .doc(cid.toString())
+        .set({"transaction": transactionHistoryCoin.toJson()});
   }
 
-  getAllHistoryCoin(String uid) {
-
-  }
+  getAllHistoryCoin(String uid) {}
 }

@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mycoin/cubit/coinDTO/coindto_cubit.dart';
+import 'package:mycoin/cubit/history_coin/history_coin_cubit.dart';
 import 'package:mycoin/data/dto/coin_dto.dart';
+import 'package:mycoin/data/model/transaction.dart';
 import 'package:mycoin/data/model/type_transaction.dart';
+import 'package:mycoin/data/repository/history_coin_repository.dart';
 import 'package:mycoin/screens/general/bottom_sheet_search_coin.dart';
 import 'package:mycoin/screens/general/my_dropdown_button.dart';
 
 class DialogAddTransaction extends StatefulWidget {
-  final CoinDTOCubit coinDTOCubit;
-  const DialogAddTransaction({Key? key, required this.coinDTOCubit})
-      : super(key: key);
+  const DialogAddTransaction({Key? key}) : super(key: key);
 
   @override
   State<DialogAddTransaction> createState() => _DialogAddTransactionState();
@@ -22,16 +23,23 @@ class _DialogAddTransactionState extends State<DialogAddTransaction> {
   TextEditingController controllerPrice = TextEditingController();
 
   TypeTransaction typeTransactionChoose = TypeTransaction.buy;
-
+  late int cid;
   changeTypeTransactionChoose(TypeTransaction typeTransaction) {
     typeTransactionChoose = typeTransaction;
   }
 
-  save(){
+  saveClick(BuildContext context) {
     print(controllerCoinSymbol.text);
     print(controllerPrice.text);
     print(controllerValue.text);
     print(typeTransactionChoose.toString());
+
+    TransactionCoin transactionCoin = TransactionCoin(
+        double.parse(controllerValue.text),
+        double.parse(controllerPrice.text),
+        typeTransactionChoose);
+    BlocProvider.of<HistoryCoinCubit>(context)
+        .saveHistoryCoin("1", cid, transactionCoin);
   }
 
   @override
@@ -89,6 +97,7 @@ class _DialogAddTransactionState extends State<DialogAddTransaction> {
                           if (coinDTO != null) {
                             controllerCoinSymbol.text =
                                 coinDTO.symbol.toString();
+                            cid = coinDTO.id!;
                           }
                         },
                       ),
@@ -131,7 +140,7 @@ class _DialogAddTransactionState extends State<DialogAddTransaction> {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.green),
                     onPressed: () => {
-                      save()
+                      saveClick(context)
                     },
                     child: const Text("Save",
                         style: TextStyle(color: Colors.white)),
