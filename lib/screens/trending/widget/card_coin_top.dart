@@ -26,7 +26,7 @@ class CardCoinTop extends StatelessWidget {
           SizedBox(
               height: 100,
               width: 50,
-              child: Center(child: Text(coin.symbol.toString()))),
+              child: Center(child: Text(coin.symbol.toString(), style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),))),
           SizedBox(
               height: 100,
               width: 50,
@@ -37,8 +37,9 @@ class CardCoinTop extends StatelessWidget {
               child: Center(
                   child: Text(
                 coin.quote!.price.toStringAsFixed(2),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
               ))),
-          ElevatedButton(onPressed: () => {}, child: Text("Buy")),
+          ElevatedButton(onPressed: () => {}, child: Text("Detail")),
         ],
       ),
     );
@@ -50,10 +51,10 @@ class CardCoinTop extends StatelessWidget {
     TextStyle textStyle;
     if (percent < 0) {
       isNegative = true;
-      textStyle = const TextStyle(color: Colors.red);
+      textStyle = const TextStyle(color: Colors.red, fontSize: 14, fontWeight: FontWeight.w600);
       percent *= -1;
     } else {
-      textStyle = const TextStyle(color: Colors.green);
+      textStyle = const TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w600);
     }
     return Text(percent.toStringAsFixed(2), style: textStyle);
   }

@@ -133,7 +133,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       floatingActionButton: FloatingActionButton(
           
           child: const Icon(Icons.insights),
-          // backgroundColor: const Color(0xFFE57373),
+          backgroundColor: Colors.amber.shade700,
           onPressed: () {
             showDialog<void>(context: context, builder: (context) => const DialogAddTransaction());
           }),
