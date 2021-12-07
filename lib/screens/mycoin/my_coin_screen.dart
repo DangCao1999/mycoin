@@ -6,7 +6,12 @@ class MyCoinScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("Your Coin"),
+      child: ElevatedButton(
+        child: const Text("save users"),
+        onPressed: () => {
+          
+        },
+      ),
     );
   }
 }

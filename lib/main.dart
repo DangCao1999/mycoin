@@ -4,13 +4,17 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screen_lock/flutter_screen_lock.dart';
-import 'package:mycoin/cubit/coin_cubit.dart';
+import 'package:mycoin/cubit/coin.dart/coin_cubit.dart';
 import 'package:mycoin/data/repository/coin_repository.dart';
+import 'package:mycoin/data/repository/user_repository.dart';
 import 'package:mycoin/screens/mycoin/my_coin_screen.dart';
 import 'package:mycoin/screens/trending/trending_screen.dart';
 
 void main() => runApp(MultiRepositoryProvider(
-    providers: [RepositoryProvider(create: (_) => CoinRepository())],
+    providers: [
+      RepositoryProvider(create: (_) => CoinRepository()),
+      RepositoryProvider(create: (_) => UserRepository()),
+      ],
     child: const MyApp()));
 
 /// This is the main application widget.

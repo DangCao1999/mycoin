@@ -1,0 +1,1 @@
+enum TypeTransaction { sell, buy }

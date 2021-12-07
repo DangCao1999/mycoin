@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mycoin/cubit/coin_cubit.dart';
+import 'package:mycoin/cubit/coin.dart/coin_cubit.dart';
 import 'package:mycoin/data/model/coin.dart';
 import 'package:mycoin/screens/trending/widget/card_coin_top.dart';
 
