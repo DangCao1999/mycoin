@@ -4,7 +4,7 @@ import 'package:mycoin/data/model/user.dart';
 class UserRepository {
   CollectionReference users = FirebaseFirestore.instance.collection('users');
   Future<void> saveUser(User user) {
-    return users.add(user).then((data) => print(data));
+    return users.doc(user.id).set(user.toJson());
   }
   // Future<void> saveHistoryCoin(String id) {
   //   return users.add(user})
