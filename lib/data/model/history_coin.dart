@@ -35,11 +35,13 @@ class HistoryCoin {
     return data;
   }
 
-  HistoryCoin.fromSnapshot(QueryDocumentSnapshot<Map<String, dynamic>> snapshot) :
-    cid = snapshot.id,
-    totalMoney= double.parse(snapshot["totalMoney"].toString()),
-    totalValue = double.parse(snapshot["totalValue"].toString()),
-    transaction = List.from(snapshot["transaction"]);
-    // ["transaction"].forEach((e) => TransactionCoin.fromMap(e));
-  
+  HistoryCoin.fromSnapshot(
+      QueryDocumentSnapshot<Map<String, dynamic>> snapshot) {
+    cid = snapshot.id;
+    totalMoney = double.parse(snapshot["totalMoney"].toString());
+    totalValue = double.parse(snapshot["totalValue"].toString());
+    transaction = <TransactionCoin>[];
+    snapshot["transaction"]
+        .forEach((e) => transaction.add(TransactionCoin.fromMap(e)));
+  }
 }

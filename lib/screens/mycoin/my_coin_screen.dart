@@ -13,7 +13,7 @@ class MyCoinScreen extends StatelessWidget {
       builder: (context, state) {
         if(state is HistoryCoinInitial)
         {
-          //BlocProvider.of<HistoryCoinCubit>(context).getHistoryCoin("1");
+          BlocProvider.of<HistoryCoinCubit>(context).getHistoryCoin("1");
         }
         return Container(
           child: ElevatedButton(

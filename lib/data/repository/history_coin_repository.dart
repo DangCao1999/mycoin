@@ -12,11 +12,7 @@ class HistoryCoinRepository {
         .doc(cid.toString())
         .get();
     if (data.exists) {
-      users
-          .doc(uid)
-          .collection("transactionHistory")
-          .doc(cid.toString())
-          .set({
+      users.doc(uid).collection("transactionHistory").doc(cid.toString()).set({
         "transaction": FieldValue.arrayUnion([transactionHistoryCoin.toJson()])
       });
     } else {
@@ -28,15 +24,14 @@ class HistoryCoinRepository {
 
   Future<List<HistoryCoin>> getAllHistoryCoin(String uid) async {
     List<HistoryCoin> list = [];
-    QuerySnapshot<Map<String, dynamic>> querySnapshot = await users.doc(uid).collection("transactionHistory").get();
+    QuerySnapshot<Map<String, dynamic>> querySnapshot =
+        await users.doc(uid).collection("transactionHistory").get();
     for (var e in querySnapshot.docs) {
       //tran
       list.add(HistoryCoin.fromSnapshot(e));
 
       //print(Type(e.data()["transaction"]);
     }
-     
-   
     return list;
   }
 }
