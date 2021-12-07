@@ -13,10 +13,14 @@ class HistoryCoinRepository {
         .get();
     if (data.exists) {
       users.doc(uid).collection("transactionHistory").doc(cid.toString()).set({
+        "totalMoney": 0,
+        "totalValue": 0,
         "transaction": FieldValue.arrayUnion([transactionHistoryCoin.toJson()])
       });
     } else {
       users.doc(uid).collection("transactionHistory").doc(cid.toString()).set({
+        "totalMoney": 0,
+        "totalValue": 0,
         "transaction": [transactionHistoryCoin.toJson()]
       });
     }

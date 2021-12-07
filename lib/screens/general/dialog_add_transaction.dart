@@ -140,7 +140,8 @@ class _DialogAddTransactionState extends State<DialogAddTransaction> {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.green),
                     onPressed: () => {
-                      saveClick(context)
+                      saveClick(context),
+                      Navigator.of(context).pop()
                     },
                     child: const Text("Save",
                         style: TextStyle(color: Colors.white)),

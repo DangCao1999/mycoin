@@ -17,6 +17,9 @@ class HistoryCoinSaveFail extends HistoryCoinState {}
 
 class HistoryCoinLoading extends HistoryCoinState {}
 
-class HistoryCoinLoaded extends HistoryCoinState {}
+class HistoryCoinLoaded extends HistoryCoinState {
+  final List<HistoryCoin> list;
+  HistoryCoinLoaded(this.list);
+}
 
 class HistoryCoinLoadFail extends HistoryCoinState {}

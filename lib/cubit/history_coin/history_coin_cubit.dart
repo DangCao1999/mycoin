@@ -21,8 +21,8 @@ class HistoryCoinCubit extends Cubit<HistoryCoinState> {
   getHistoryCoin(String uid) async 
   {
     emit(HistoryCoinLoading());
-    await historyCoinRepository.getAllHistoryCoin(uid);
-    emit(HistoryCoinLoaded());
+    List<HistoryCoin> list = await historyCoinRepository.getAllHistoryCoin(uid);
+    emit(HistoryCoinLoaded(list));
   }
 
 }
