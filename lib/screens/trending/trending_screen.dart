@@ -45,11 +45,11 @@ class _TrendingScreenState extends State<TrendingScreen> {
                   width: double.infinity,
                   height: 50,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: const [
                       SizedBox(
                           height: 48,
-                          width: 48,
+                          width: 60,
                           child: Center(
                               child: Text(
                             "ID",
@@ -58,7 +58,7 @@ class _TrendingScreenState extends State<TrendingScreen> {
                           ))),
                       SizedBox(
                           height: 100,
-                          width: 50,
+                          width: 60,
                           child: Center(
                             child: Text("Name",
                                 style: TextStyle(
@@ -66,7 +66,7 @@ class _TrendingScreenState extends State<TrendingScreen> {
                           )),
                       SizedBox(
                           height: 100,
-                          width: 50,
+                          width: 60,
                           child: Center(
                               child: Text("24h",
                                   style: TextStyle(
@@ -74,7 +74,7 @@ class _TrendingScreenState extends State<TrendingScreen> {
                                       fontWeight: FontWeight.bold)))),
                       SizedBox(
                           height: 100,
-                          width: 70,
+                          width: 80,
                           child: Center(
                               child: Text("Price",
                                   style: TextStyle(

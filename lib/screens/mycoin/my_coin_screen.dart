@@ -32,41 +32,110 @@ class MyCoinScreen extends StatelessWidget {
               BlocProvider.of<HistoryCoinCubit>(context).getHistoryCoin("1");
             });
           },
-          child: Container(
-            height: double.infinity,
-            child: ListView.builder(
-                itemCount: listHistoryCoin.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                      height: 80,
-                      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.network(
-                            "https://s2.coinmarketcap.com/static/img/coins/64x64/${listHistoryCoin[index].cid}.png",
-                            width: 48,
-                            height: 48,
-                          ),
-                          SizedBox(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              height: double.infinity,
+              child: ListView.builder(
+                  itemCount: listHistoryCoin.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                        margin: EdgeInsets.only(top: 20),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(10),
+                              topRight: Radius.circular(10),
+                              bottomLeft: Radius.circular(10),
+                              bottomRight: Radius.circular(10)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                        height: 80,
+                        padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Image.network(
+                              "https://s2.coinmarketcap.com/static/img/coins/64x64/${listHistoryCoin[index].cid}.png",
+                              width: 48,
+                              height: 48,
+                            ),
+                            SizedBox(
+                                height: 100,
+                                width: 50,
+                                child: Center(
+                                    child: Text(
+                                  listHistoryCoin[index].symbolCoin.toString(),
+                                  style: const TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600),
+                                ))),
+                            SizedBox(
                               height: 100,
-                              width: 50,
-                              child: Center(
-                                  child: Text(
-                                listHistoryCoin[index].cid.toString(),
-                                style: const TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.w600),
-                              ))),
-                          IconButton(
-                            color: Colors.blue.shade900,
-                            icon: const Icon(Icons.info_outline),
-                            onPressed: () => {
-                              // Navigator.pop(context,coinsDTOFilter[index])
-                            },
-                          )
-                        ],
-                      ));
-                }),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.monetization_on_outlined,
+                                        color: Colors.amber,
+                                      ),
+                                      Text(
+                                        "500000",
+                                        style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.pie_chart_outline,
+                                        color: Colors.cyan.shade900,
+                                      ),
+                                      Text(
+                                        "100000000",
+                                        style: const TextStyle(
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                            IconButton(
+                              color: Colors.blue.shade900,
+                              icon: const Icon(Icons.info_outline),
+                              onPressed: () => {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                       behavior: SnackBarBehavior.fixed,
+                                      duration:  Duration(seconds: 2),
+                                      backgroundColor: Colors.orange.shade400,
+                                      content: Row(
+                                        children: [
+                                          Icon(Icons.local_fire_department, color: Colors.red,),
+                                          Text('Comming Soon!', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),),
+                                        ],
+                                      )))
+                              },
+                            )
+                          ],
+                        ));
+                  }),
+            ),
           ),
         );
       },
