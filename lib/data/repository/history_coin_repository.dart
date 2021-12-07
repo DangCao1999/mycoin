@@ -5,7 +5,7 @@ import 'package:mycoin/data/model/transaction.dart';
 class HistoryCoinRepository {
   CollectionReference users = FirebaseFirestore.instance.collection('users');
   saveTransaction(
-      String uid, int cid, TransactionCoin transactionHistoryCoin) async {
+      String uid, int cid, String symbolCoin, TransactionCoin transactionHistoryCoin) async {
     var data = await users
         .doc(uid)
         .collection("transactionHistory")
@@ -13,12 +13,14 @@ class HistoryCoinRepository {
         .get();
     if (data.exists) {
       users.doc(uid).collection("transactionHistory").doc(cid.toString()).set({
+        "symbolCoin": symbolCoin, 
         "totalMoney": 0,
         "totalValue": 0,
         "transaction": FieldValue.arrayUnion([transactionHistoryCoin.toJson()])
       });
     } else {
       users.doc(uid).collection("transactionHistory").doc(cid.toString()).set({
+        "symbolCoin": symbolCoin, 
         "totalMoney": 0,
         "totalValue": 0,
         "transaction": [transactionHistoryCoin.toJson()]

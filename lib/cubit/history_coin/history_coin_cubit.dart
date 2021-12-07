@@ -10,10 +10,10 @@ class HistoryCoinCubit extends Cubit<HistoryCoinState> {
   HistoryCoinRepository historyCoinRepository;
   HistoryCoinCubit(this.historyCoinRepository) : super(HistoryCoinInitial());
 
-  saveHistoryCoin(String uid, int cid, TransactionCoin transaction)
+  saveHistoryCoin(String uid, int cid, String symbolCoin, TransactionCoin transaction)
   {
     emit(HistoryCoinSaving());
-    historyCoinRepository.saveTransaction(uid, cid, transaction);
+    historyCoinRepository.saveTransaction(uid, cid, symbolCoin, transaction);
     emit(HistoryCoinSaveDone());
   }
 

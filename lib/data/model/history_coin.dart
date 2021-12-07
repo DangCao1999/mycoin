@@ -6,6 +6,7 @@ import 'package:mycoin/data/model/type_transaction.dart';
 
 class HistoryCoin {
   late String cid;
+  late String symbolCoin;
   late double totalMoney;
   late double totalValue;
   late List<TransactionCoin> transaction;
@@ -38,6 +39,7 @@ class HistoryCoin {
   HistoryCoin.fromSnapshot(
       QueryDocumentSnapshot<Map<String, dynamic>> snapshot) {
     cid = snapshot.id;
+    symbolCoin = snapshot["symbolCoin"];
     totalMoney = double.parse(snapshot["totalMoney"].toString());
     totalValue = double.parse(snapshot["totalValue"].toString());
     transaction = <TransactionCoin>[];

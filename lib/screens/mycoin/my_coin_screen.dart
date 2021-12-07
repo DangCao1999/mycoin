@@ -39,6 +39,7 @@ class MyCoinScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Container(
                       height: 80,
+                      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -57,8 +58,8 @@ class MyCoinScreen extends StatelessWidget {
                                     fontSize: 14, fontWeight: FontWeight.w600),
                               ))),
                           IconButton(
-                            color: Colors.deepPurple.shade900,
-                            icon: const Icon(Icons.favorite_border),
+                            color: Colors.blue.shade900,
+                            icon: const Icon(Icons.info_outline),
                             onPressed: () => {
                               // Navigator.pop(context,coinsDTOFilter[index])
                             },

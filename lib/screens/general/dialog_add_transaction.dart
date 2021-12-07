@@ -23,7 +23,7 @@ class _DialogAddTransactionState extends State<DialogAddTransaction> {
   TextEditingController controllerPrice = TextEditingController();
 
   TypeTransaction typeTransactionChoose = TypeTransaction.buy;
-  late int cid;
+  CoinDTO? coinDTO; 
   changeTypeTransactionChoose(TypeTransaction typeTransaction) {
     typeTransactionChoose = typeTransaction;
   }
@@ -39,7 +39,7 @@ class _DialogAddTransactionState extends State<DialogAddTransaction> {
         double.parse(controllerPrice.text),
         typeTransactionChoose);
     BlocProvider.of<HistoryCoinCubit>(context)
-        .saveHistoryCoin("1", cid, transactionCoin);
+        .saveHistoryCoin("1", coinDTO!.id!, coinDTO!.symbol!, transactionCoin);
   }
 
   @override
@@ -80,7 +80,7 @@ class _DialogAddTransactionState extends State<DialogAddTransaction> {
                             labelText: 'Coin',
                             hintText: 'Enter Coin symbol ex: BTC'),
                         onTap: () async {
-                          CoinDTO? coinDTO =
+                           coinDTO =
                               await showModalBottomSheet<CoinDTO>(
                                   // context and builder are
                                   // required properties in this widget
@@ -96,8 +96,8 @@ class _DialogAddTransactionState extends State<DialogAddTransaction> {
                                   });
                           if (coinDTO != null) {
                             controllerCoinSymbol.text =
-                                coinDTO.symbol.toString();
-                            cid = coinDTO.id!;
+                                coinDTO!.symbol.toString();
+                            
                           }
                         },
                       ),
@@ -140,7 +140,7 @@ class _DialogAddTransactionState extends State<DialogAddTransaction> {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.green),
                     onPressed: () => {
-                      saveClick(context),
+                      saveClick(context ),
                       Navigator.of(context).pop()
                     },
                     child: const Text("Save",
