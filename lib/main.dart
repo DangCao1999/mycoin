@@ -52,6 +52,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     Timer(const Duration(seconds: 3), () {
       screenLock(context: context, correctString: "1234");
     });
+    initializeFlutterFire();
     super.initState();
   }
 
