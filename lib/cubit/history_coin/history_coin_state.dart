@@ -14,3 +14,9 @@ class HistoryCoinSaving extends HistoryCoinState {}
 class HistoryCoinSaveDone extends HistoryCoinState {}
 
 class HistoryCoinSaveFail extends HistoryCoinState {}
+
+class HistoryCoinLoading extends HistoryCoinState {}
+
+class HistoryCoinLoaded extends HistoryCoinState {}
+
+class HistoryCoinLoadFail extends HistoryCoinState {}

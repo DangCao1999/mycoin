@@ -7,7 +7,7 @@ import 'package:flutter_screen_lock/flutter_screen_lock.dart';
 import 'package:mycoin/cubit/coin.dart/coin_cubit.dart';
 import 'package:mycoin/cubit/coinDTO/coindto_cubit.dart';
 import 'package:mycoin/cubit/history_coin/history_coin_cubit.dart';
-import 'package:mycoin/cubit/user/cubit/user_cubit.dart';
+import 'package:mycoin/cubit/user/user_cubit.dart';
 import 'package:mycoin/data/dto/coin_dto.dart';
 import 'package:mycoin/data/repository/coin_repository.dart';
 import 'package:mycoin/data/repository/history_coin_repository.dart';

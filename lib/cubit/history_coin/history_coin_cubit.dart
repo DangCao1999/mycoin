@@ -14,8 +14,15 @@ class HistoryCoinCubit extends Cubit<HistoryCoinState> {
   {
     emit(HistoryCoinSaving());
     historyCoinRepository.saveTransaction(uid, cid, transaction);
-    emit(HistoryCoinSaveFail());
+    emit(HistoryCoinSaveDone());
   }
 
+
+  getHistoryCoin(String uid) async 
+  {
+    emit(HistoryCoinLoading());
+    await historyCoinRepository.getAllHistoryCoin(uid);
+    emit(HistoryCoinLoaded());
+  }
 
 }
