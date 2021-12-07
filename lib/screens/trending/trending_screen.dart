@@ -44,19 +44,32 @@ class _TrendingScreenState extends State<TrendingScreen> {
                     SizedBox(
                         height: 48,
                         width: 48,
-                        child: Center(child: Text("ID"))),
+                        child: Center(
+                            child: Text(
+                          "ID",
+                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                        ))),
                     SizedBox(
                         height: 100,
                         width: 50,
-                        child: Center(child: Text("Name"))),
+                        child: Center(
+                          child: Text("Name",
+                              style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
+                        )),
                     SizedBox(
                         height: 100,
                         width: 50,
-                        child: Center(child: Text("24h"))),
+                        child: Center(
+                            child: Text("24h",
+                                style:
+                                    TextStyle(fontSize: 15,fontWeight: FontWeight.bold)))),
                     SizedBox(
                         height: 100,
                         width: 70,
-                        child: Center(child: Text("Price"))),
+                        child: Center(
+                            child: Text("Price",
+                                style:
+                                    TextStyle(fontSize: 15,fontWeight: FontWeight.bold)))),
                     SizedBox(
                       height: 100,
                       width: 50,
