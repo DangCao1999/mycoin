@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mycoin/data/model/type_transaction.dart';
 
 class MyDropdownButton extends StatefulWidget {
-  const MyDropdownButton({Key? key}) : super(key: key);
-
+  const MyDropdownButton({Key? key, required this.changeTypeTransaction}) : super(key: key);
+  final Function changeTypeTransaction;
   @override
   State<MyDropdownButton> createState() => _MyDropdownButtonState();
 }
@@ -11,7 +11,7 @@ class MyDropdownButton extends StatefulWidget {
 
 class _MyDropdownButtonState extends State<MyDropdownButton> {
      late TypeTransaction dropdownValue = TypeTransaction.buy;
-
+  
   @override
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(
@@ -20,9 +20,11 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
         //elevation: 16,
         //style: const TextStyle(color: Colors.deepPurple),
         onChanged: (TypeTransaction? newValue) {
+          widget.changeTypeTransaction(newValue);
           setState(() {
             dropdownValue = newValue!;
           });
+
         },
         items: TypeTransaction.values.map<DropdownMenuItem<TypeTransaction>>((TypeTransaction value) {
           return DropdownMenuItem<TypeTransaction>(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mycoin/cubit/coinDTO/coindto_cubit.dart';
 import 'package:mycoin/data/dto/coin_dto.dart';
+import 'package:mycoin/data/model/type_transaction.dart';
 
 class BottomSheetSearchCoin extends StatefulWidget {
   BottomSheetSearchCoin({Key? key}) : super(key: key);
@@ -14,6 +15,8 @@ class _BottomSheetSearchCoinState extends State<BottomSheetSearchCoin> {
   TextEditingController controller = TextEditingController();
   late List<CoinDTO> coinsDTO;
   late List<CoinDTO> coinsDTOFilter;
+
+
   @override
   void initState() {
     // TODO: implement initState
@@ -100,7 +103,9 @@ class _BottomSheetSearchCoinState extends State<BottomSheetSearchCoin> {
                               IconButton(
                                 color: Colors.deepPurple.shade900,
                                 icon: const Icon(Icons.favorite_border),
-                                onPressed: () => {},
+                                onPressed: () => {
+                                  Navigator.pop(context,coinsDTOFilter[index])
+                                },
                               )
                             ],
                           ),
