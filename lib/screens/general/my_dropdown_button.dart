@@ -17,8 +17,8 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
     return DropdownButtonHideUnderline(
       child: DropdownButton<TypeTransaction>(
         value: dropdownValue,
-        elevation: 16,
-        style: const TextStyle(color: Colors.deepPurple),
+        //elevation: 16,
+        //style: const TextStyle(color: Colors.deepPurple),
         onChanged: (TypeTransaction? newValue) {
           setState(() {
             dropdownValue = newValue!;
@@ -27,7 +27,7 @@ class _MyDropdownButtonState extends State<MyDropdownButton> {
         items: TypeTransaction.values.map<DropdownMenuItem<TypeTransaction>>((TypeTransaction value) {
           return DropdownMenuItem<TypeTransaction>(
             value: value,
-            child: Text(value.toString().split(".").last.toUpperCase()),
+            child: Text(value.toString().split(".").last.toUpperCase(), style: TextStyle(fontWeight: FontWeight.w500),),
           );
         }).toList(),
       ),

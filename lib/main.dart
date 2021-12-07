@@ -26,7 +26,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(fontFamily: "OpenSands"),
+        theme: ThemeData(
+          fontFamily: "OpenSands",
+          
+          ),
         title: _title,
         home: MultiBlocProvider(
           providers: [
@@ -128,7 +131,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         onTap: _onItemTapped,
       ),
       floatingActionButton: FloatingActionButton(
-          elevation: 0.0,
+          
           child: const Icon(Icons.insights),
           // backgroundColor: const Color(0xFFE57373),
           onPressed: () {
