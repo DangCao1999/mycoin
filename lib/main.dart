@@ -8,6 +8,7 @@ import 'package:mycoin/cubit/coin.dart/coin_cubit.dart';
 import 'package:mycoin/cubit/user/cubit/user_cubit.dart';
 import 'package:mycoin/data/repository/coin_repository.dart';
 import 'package:mycoin/data/repository/user_repository.dart';
+import 'package:mycoin/screens/general/dialog_add_transaction.dart';
 import 'package:mycoin/screens/mycoin/my_coin_screen.dart';
 import 'package:mycoin/screens/trending/trending_screen.dart';
 
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        theme: ThemeData(fontFamily: "OpenSands"),
         title: _title,
         home: MultiBlocProvider(
           providers: [
@@ -101,6 +103,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
       return const Text("Loading");
     }
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text("MyCoin"),
       ),
@@ -124,6 +127,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
+      floatingActionButton: FloatingActionButton(
+          elevation: 0.0,
+          child: const Icon(Icons.insights),
+          // backgroundColor: const Color(0xFFE57373),
+          onPressed: () {
+            showDialog<void>(context: context, builder: (context) => const DialogAddTransaction());
+          }),
     );
   }
 }
