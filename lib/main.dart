@@ -56,7 +56,6 @@ class MyStatefulWidget extends StatefulWidget {
 
 /// This is the private State class that goes with MyStatefulWidget.
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     TrendingScreen(),

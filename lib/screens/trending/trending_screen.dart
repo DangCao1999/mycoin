@@ -29,63 +29,74 @@ class _TrendingScreenState extends State<TrendingScreen> {
           );
         }
         List<Coin> coins = (state as CoinLoaded).coins;
-        return Container(
-          height: double.infinity,
-          width: double.infinity,
-          padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-          child: Column(
-            children: [
-              Container(
-                width: double.infinity,
-                height: 50,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    SizedBox(
-                        height: 48,
-                        width: 48,
-                        child: Center(
-                            child: Text(
-                          "ID",
-                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                        ))),
-                    SizedBox(
+        return RefreshIndicator(
+          onRefresh: () {
+            return Future(() {
+              BlocProvider.of<CoinCubit>(context).getCoinTop();
+            });
+          },
+          child: Container(
+            height: double.infinity,
+            width: double.infinity,
+            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            child: Column(
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 50,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      SizedBox(
+                          height: 48,
+                          width: 48,
+                          child: Center(
+                              child: Text(
+                            "ID",
+                            style: TextStyle(
+                                fontSize: 15, fontWeight: FontWeight.bold),
+                          ))),
+                      SizedBox(
+                          height: 100,
+                          width: 50,
+                          child: Center(
+                            child: Text("Name",
+                                style: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.bold)),
+                          )),
+                      SizedBox(
+                          height: 100,
+                          width: 50,
+                          child: Center(
+                              child: Text("24h",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold)))),
+                      SizedBox(
+                          height: 100,
+                          width: 70,
+                          child: Center(
+                              child: Text("Price",
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold)))),
+                      SizedBox(
                         height: 100,
                         width: 50,
-                        child: Center(
-                          child: Text("Name",
-                              style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold)),
-                        )),
-                    SizedBox(
-                        height: 100,
-                        width: 50,
-                        child: Center(
-                            child: Text("24h",
-                                style:
-                                    TextStyle(fontSize: 15,fontWeight: FontWeight.bold)))),
-                    SizedBox(
-                        height: 100,
-                        width: 70,
-                        child: Center(
-                            child: Text("Price",
-                                style:
-                                    TextStyle(fontSize: 15,fontWeight: FontWeight.bold)))),
-                    SizedBox(
-                      height: 100,
-                      width: 50,
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                height: 570,
-                child: ListView.builder(
-                    itemCount: coins.length,
-                    itemBuilder: (BuildContext context, index) {
-                      return CardCoinTop(coin: coins[index]);
-                    }),
-              ),
-            ],
+                Container(
+                  height: 570,
+                  child: ListView.builder(
+                      itemCount: coins.length,
+                      itemBuilder: (BuildContext context, index) {
+                        return CardCoinTop(coin: coins[index]);
+                      }),
+                ),
+              ],
+            ),
           ),
         );
       },

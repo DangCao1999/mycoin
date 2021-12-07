@@ -10,8 +10,6 @@ class CardCoinTop extends StatelessWidget {
   bool isNegative = false;
   @override
   Widget build(BuildContext context) {
-    var formatter = NumberFormat('#,##,000');
-
     return Container(
       width: double.infinity,
       height: 100,
