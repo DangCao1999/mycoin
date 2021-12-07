@@ -110,12 +110,24 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     if (_error) {
-      return const Text("Some thing went wrong!");
+      return Scaffold(
+        body: Container(
+          child: Center(
+            child: Text("Some thing went wrong!"),
+          ),
+        ),
+      );
     }
 
     // Show a loader until FlutterFire is initialized
     if (!_initialized) {
-      return const Text("Loading");
+      return Scaffold(
+        body: Container(
+          child: Center(
+            child: CircularProgressIndicator(),
+          ),
+        ),
+      );
     }
     return Scaffold(
       resizeToAvoidBottomInset: false,
