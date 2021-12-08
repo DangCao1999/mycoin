@@ -27,9 +27,10 @@ Xây dựng ứng dụng cho phép người dùng xem giá và thông tin của 
 * Tiếp theo gõ lệnh: 
     > flutter run
 
+## Người thực hiện project
+* Nguyễn Vỏ Đăng Cao
 ## Giao diện của App
 ![Alt Text](https://raw.githubusercontent.com/DangCao1999/mycoin/7f46425bcc75c137d2d2a294a246cfb77c99c652/mycoin.gif)
 
-## Người thực hiện project
-* Nguyễn Vỏ Đăng Cao
+
 
