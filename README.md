@@ -18,6 +18,10 @@ Xây dựng ứng dụng cho phép người dùng xem giá và thông tin của 
 * Chưa có chức năng đăng nhập nên chưa có phân hoạch được dữ liệu riêng cho từng người dùng
 * Phần thống kê tính toán còn đang hơi bug bug 😅
 
+## Các dịch và bên thứ 3
+
+* API Coinmartketcap
+* Google Firebase
 ## Cách để chạy project
 
 * Clone project
@@ -26,6 +30,7 @@ Xây dựng ứng dụng cho phép người dùng xem giá và thông tin của 
 * Kết nối với máy ảo hoặc máy thật 
 * Tiếp theo gõ lệnh: 
     > flutter run
+
 
 ## Người thực hiện project
 * Nguyễn Vỏ Đăng Cao
