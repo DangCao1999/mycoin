@@ -49,6 +49,8 @@ class MyApp extends StatelessWidget {
                     RepositoryProvider.of<CoinRepository>(context))),
             BlocProvider(
               create: (context) => HistoryCoinCubit(
+                coinRepository: RepositoryProvider.of<CoinRepository>(context),
+                historyCoinRepository:
                   RepositoryProvider.of<HistoryCoinRepository>(context)),
             ),
           ],

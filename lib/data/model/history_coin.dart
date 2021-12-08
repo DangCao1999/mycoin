@@ -9,6 +9,7 @@ class HistoryCoin {
   late String symbolCoin;
   late double totalMoney;
   late double totalValue;
+  late double profit;
   late List<TransactionCoin> transaction;
   HistoryCoin(this.cid, this.transaction);
 
@@ -26,6 +27,11 @@ class HistoryCoin {
         }
       }
     }
+  }
+
+  calculateProfit(double newPrice){
+    double totalNewPrice = totalValue * newPrice;
+    profit = totalNewPrice - totalMoney;
   }
 
   Map<String, dynamic> toJson() {

@@ -29,10 +29,10 @@ class _DialogAddTransactionState extends State<DialogAddTransaction> {
   }
 
   saveClick(BuildContext context) {
-    print(controllerCoinSymbol.text);
-    print(controllerPrice.text);
-    print(controllerValue.text);
-    print(typeTransactionChoose.toString());
+    // print(controllerCoinSymbol.text);
+    // print(controllerPrice.text);
+    // print(controllerValue.text);
+    // print(typeTransactionChoose.toString());
 
     TransactionCoin transactionCoin = TransactionCoin(
         double.parse(controllerValue.text),

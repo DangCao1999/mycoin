@@ -88,7 +88,7 @@ class MyCoinScreen extends StatelessWidget {
                                     children: [
                                       Icon(
                                         Icons.monetization_on_outlined,
-                                        color: Colors.amber,
+                                        color: Colors.green,
                                       ),
                                       Text(
                                         "500000",
@@ -102,7 +102,7 @@ class MyCoinScreen extends StatelessWidget {
                                     children: [
                                       Icon(
                                         Icons.pie_chart_outline,
-                                        color: Colors.cyan.shade900,
+                                        color: Colors.cyan,
                                       ),
                                       Text(
                                         "100000000",

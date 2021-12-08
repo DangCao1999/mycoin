@@ -27,4 +27,17 @@ class CoinRepository{
     coinsData = data.map((coin) => CoinDTO.fromJson(coin)).toList();
     return coinsData;
   }
+
+  Future<Map<String,Coin>> getInfoCoin(List<String> cids) async{
+    Map<String,Coin> coinsData = {};
+    var response  = await _dio.get(Enviroment.endPoint + "/v1/cryptocurrency/quotes/latest?id=" + cids.join(","));
+    var data = response.data["data"];
+    
+    // coinsData = data.map((coin) => Coin.fromJson(coin)).toList();
+    for (var element in cids) { 
+      coinsData[element] = Coin.fromJson(data[element]);
+    }
+    //print(coinsData);
+    return coinsData;
+  }
 }
