@@ -80,6 +80,7 @@ class MyCoinScreen extends StatelessWidget {
                                 ))),
                             SizedBox(
                               height: 100,
+                              width: 125,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,10 +89,12 @@ class MyCoinScreen extends StatelessWidget {
                                     children: [
                                       Icon(
                                         Icons.monetization_on_outlined,
-                                        color: Colors.green,
+                                        color: Colors.yellow.shade700,
                                       ),
                                       Text(
-                                        "500000",
+                                        listHistoryCoin[index]
+                                            .totalMoney
+                                            .toStringAsFixed(2),
                                         style: const TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w600),
@@ -105,10 +108,18 @@ class MyCoinScreen extends StatelessWidget {
                                         color: Colors.cyan,
                                       ),
                                       Text(
-                                        "100000000",
-                                        style: const TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600),
+                                        listHistoryCoin[index]
+                                            .profit
+                                            .toStringAsFixed(2),
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                          color:
+                                              (listHistoryCoin[index].profit <
+                                                      0)
+                                                  ? Colors.red
+                                                  : Colors.green,
+                                        ),
                                       ),
                                     ],
                                   )
@@ -119,17 +130,25 @@ class MyCoinScreen extends StatelessWidget {
                               color: Colors.blue.shade900,
                               icon: const Icon(Icons.info_outline),
                               onPressed: () => {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                       behavior: SnackBarBehavior.fixed,
-                                      duration:  Duration(seconds: 2),
-                                      backgroundColor: Colors.orange.shade400,
-                                      content: Row(
-                                        children: [
-                                          Icon(Icons.local_fire_department, color: Colors.red,),
-                                          Text('Comming Soon!', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),),
-                                        ],
-                                      )))
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                        behavior: SnackBarBehavior.fixed,
+                                        duration: Duration(seconds: 2),
+                                        backgroundColor: Colors.orange.shade400,
+                                        content: Row(
+                                          children: [
+                                            Icon(
+                                              Icons.local_fire_department,
+                                              color: Colors.red,
+                                            ),
+                                            Text(
+                                              'Comming Soon!',
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w800),
+                                            ),
+                                          ],
+                                        )))
                               },
                             )
                           ],

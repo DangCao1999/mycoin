@@ -15,8 +15,8 @@ class TransactionCoin {
   }
 
   TransactionCoin.fromMap(Map<dynamic, dynamic> map)
-      : valueCoin = map["valueCoin"],
-        price = map["price"],
+      : valueCoin = map["valueCoin"] + 0.0,
+        price = map["price"] + 0.0,
         typeTransaction = TypeTransaction.values.firstWhere(
             (element) => element.toString() == map["typeTransaction"]);
 }
