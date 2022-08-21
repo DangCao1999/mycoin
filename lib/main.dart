@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
                   RepositoryProvider.of<HistoryCoinRepository>(context)),
             ),
           ],
-          child: const MyStatefulWidget(),
+          child: const Text("test"),
         ));
   }
 }
