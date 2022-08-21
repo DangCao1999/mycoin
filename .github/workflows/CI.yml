@@ -36,7 +36,7 @@ jobs:
       - name: create badge
         run: lcov-badge2 coverage/lcov.info
 
-      - uses: mshick/add-pr-comment@*
+      - uses: mshick/add-pr-comment@v1
         with:
           message: |
             **Hello**
