@@ -36,3 +36,13 @@ jobs:
       - name: create badge
         run: lcov-badge2 coverage/lcov.info
 
+      - uses: mshick/add-pr-comment@*
+        with:
+          message: |
+            **Hello**
+            🌏
+            !
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token-user-login: 'github-actions[bot]' # The user.login for temporary GitHub tokens
+          allow-repeats: false # This is the default
+
