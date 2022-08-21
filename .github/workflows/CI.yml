@@ -26,3 +26,13 @@ jobs:
           coverage-files: coverage/lcov.info
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: install lcov-badge2
+        run: npm i -g lcov-badge2
+
+      - name: create badge
+        run: lcov-badge2 coverage/lcov.info
+
