@@ -19,3 +19,10 @@ jobs:
           channel: 'stable'
 
       - run: flutter test --coverage
+
+      - name: Report LCOV
+        uses: zgosalvez/github-actions-report-lcov@v1.5.0
+        with:
+          coverage-file: coverage/lcov.info
+          artifact-name: code-coverage-report
+
