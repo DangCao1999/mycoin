@@ -24,5 +24,4 @@ jobs:
         uses: zgosalvez/github-actions-report-lcov@v1.5.0
         with:
           coverage-files: coverage/lcov.info
-          artifact-name: code-coverage-report
 
